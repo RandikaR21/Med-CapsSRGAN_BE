@@ -15,7 +15,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/upload": {"origins": "http://localhost:3000"}})
 capsule_model = generator()
 capsule_model.load_weights(
-    'saved_model_weights/capsule_srgan/caps_gan_no_blur/caps_gan_generator.h5')
+    'GeneratorToDeploy/caps_gan_generator.h5')
 
 
 @app.route('/')
