@@ -3,7 +3,8 @@ FROM ubuntu:latest
 RUN apt update && apt upgrade -y
 
 
-RUN apt install -y -q build-essential python3-pip python3-dev python3-opencv
+RUN apt install -y -q python3-pip python3-dev python3-opencv
+RUN pip3 install -U pip setuptools wheel
 
 # Make working directories
 RUN  mkdir -p  /med-capssrgan-api
