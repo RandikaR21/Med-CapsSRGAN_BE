@@ -1,9 +1,9 @@
-import tensorflow as tf
+# import tensorflow as tf
 from tensorflow.keras import backend as K
-from tensorflow.python.keras.layers import Add, BatchNormalization, Conv2D, Dense, Flatten, Input, LeakyReLU, PReLU, \
+from tensorflow.keras.layers import Add, BatchNormalization, Conv2D, Dense, Flatten, Input, LeakyReLU, PReLU, \
     Lambda, Reshape, Activation, Multiply
-from tensorflow.python.keras.models import Model
-from tensorflow.python.keras.applications.vgg19 import VGG19
+from tensorflow.keras.models import Model
+from tensorflow.keras.applications.vgg19 import VGG19
 
 from sr_model.common import pixel_shuffle, normalize_01, denormalize_m11, normalize_m11
 
@@ -59,7 +59,7 @@ def sr_resnet(num_filters=64, num_res_blocks=16, withBatchNorm=True):
     x = Lambda(denormalize_m11)(x)
 
     sr_resnet_generator = Model(x_in, x)
-    tf.keras.utils.plot_model(sr_resnet_generator, show_shapes=True, to_file="SRResNet_Generator.png")
+    # tf.keras.utils.plot_model(sr_resnet_generator, show_shapes=True, to_file="SRResNet_Generator.png")
     # sr_resnet_generator.summary()
     return sr_resnet_generator
 
@@ -99,7 +99,7 @@ def capsule_discriminator():
     s_j = LeakyReLU()(x)
     pred = Dense(1, activation='sigmoid')(s_j)
     discriminator = Model(img, pred)
-    tf.keras.utils.plot_model(discriminator, show_shapes=True, to_file="Capsule_Discriminator.png")
+    # tf.keras.utils.plot_model(discriminator, show_shapes=True, to_file="Capsule_Discriminator.png")
     # capsule_discriminator.summary()
     return discriminator
 

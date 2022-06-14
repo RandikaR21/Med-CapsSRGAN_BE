@@ -18,9 +18,9 @@ valid_ds = valid_loader.dataset(batch_size=1, random_transform=False, repeat_cou
 pre_trainer = SRResNet_Trainer(model=generator(withBatchNorm=True), checkpoint_dir=f'checkpoints/generator_no_blur/')
 
 # Pre-train the generator with 1,000,000 steps (100,000 works fine too).
-pre_trainer.train(train_ds, valid_ds.take(10), steps=60000, evaluate_every=1000)
+pre_trainer.train(train_ds, valid_ds.take(10), steps=100000, evaluate_every=1000)
 
 # Save weights of pre-trained generator (needed for fine-tuning with GAN).
 model_dir = "saved_model_weights/srgan_no_blurred/"
 os.makedirs(model_dir, exist_ok=True)
-pre_trainer.model.save_weights(model_dir+"/pre_generator_no_blurred.h5")
+pre_trainer.model.save_weights(model_dir+"/pre_generator_no_blurred_100000.h5")

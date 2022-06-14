@@ -1,4 +1,6 @@
-fastapi
-uvicorn
-tensorflow
+fastapi==0.78.0
+matplotlib==3.5.0
 numpy
+Pillow
+tensorflow
+uvicorn
