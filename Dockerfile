@@ -9,13 +9,11 @@ RUN apt-get update \
 RUN  mkdir -p  /med-capssrgan-api
 WORKDIR  /med-capssrgan-api
 
-# Upgrade pip with no cache
-RUN pip install --no-cache-dir -U pip
 
 # Copy application requirements file to the created working directory
 COPY requirements.txt .
 
-
+RUN pip install --upgrade pip
 # Install application dependencies from the requirements file
 RUN pip install --no-cache-dir -r requirements.txt
 
