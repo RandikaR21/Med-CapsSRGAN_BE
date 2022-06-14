@@ -2,5 +2,5 @@ fastapi==0.78.0
 matplotlib==3.5.0
 numpy
 Pillow
-tensorflow
+tensorflow==2.3.0
 uvicorn
