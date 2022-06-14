@@ -1,4 +1,9 @@
-FROM python
+FROM python:3.8
+
+RUN apt-get update \
+    && apt-get install -y \
+        python3-opencv \
+    && rm -r /var/lib/apt/lists/
 
 # Make working directories
 RUN  mkdir -p  /med-capssrgan-api
@@ -12,12 +17,10 @@ COPY requirements.txt .
 
 
 # Install application dependencies from the requirements file
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-
-RUN apt-get install -y python3-opencv
-RUN pip install opencv-python
-RUN pip install python-multipart
+RUN pip install --no-cache-dir opencv-python
+RUN pip install --no-cache-dir python-multipart
 
 # Copy every file in the source folder to the created working directory
 COPY  /sr_model /med-capssrgan-api/sr_model
