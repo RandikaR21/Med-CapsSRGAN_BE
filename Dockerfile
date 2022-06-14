@@ -5,9 +5,9 @@ RUN apt-get update \
         cmake libsm6 libxext6 libxrender-dev protobuf-compiler \
     && rm -r /var/lib/apt/lists/*
 
-RUN useradd -m rishav
+RUN useradd -m randika
 
-COPY --chown=rishav:randika . /home/randika/app
+COPY --chown=randika:randika . /home/randika/app
 
 USER randika
 
