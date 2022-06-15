@@ -16,7 +16,15 @@ COPY requirements.txt .
 
 # Install application dependencies from the requirements file
 RUN pip3 install --no-cache-dir -r requirements.txt
-RUN pip3 install --no-cache-dir opencv-python
+#RUN pip3 install --no-cache-dir opencv-python
+
+ARG OPENCV_VERSION="4.4.0.44"
+ARG SYSTEM_CORES="8"
+RUN cp /usr/bin/make /usr/bin/make.bak && \
+    echo "make.bak --jobs=${SYSTEM_CORES} \$@" > /usr/bin/make && \
+    pip install -v opencv-python==${OPENCV_VERSION} && \
+    mv /usr/bin/make.bak /usr/bin/make
+
 RUN pip3 install --no-cache-dir python-multipart
 
 # Copy every file in the source folder to the created working directory
