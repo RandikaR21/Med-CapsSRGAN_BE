@@ -16,8 +16,10 @@ COPY requirements.txt .
 
 # Install application dependencies from the requirements file
 RUN pip3 install --no-cache-dir -r requirements.txt
-#RUN pip3 install --no-cache-dir opencv-python
 RUN pip3 install --no-cache-dir python-multipart
+
+RUN pip3 install --no-cache-dir --upgrade setuptools pip
+RUN pip3 install --no-cache-dir opencv-python
 
 # Copy every file in the source folder to the created working directory
 COPY  /sr_model /home/$USERNAME/app/sr_model
