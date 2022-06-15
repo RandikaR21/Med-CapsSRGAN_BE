@@ -20,10 +20,10 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 ARG OPENCV_VERSION="4.4.0.44"
 ARG SYSTEM_CORES="8"
-RUN cp /usr/bin/make /usr/bin/make.bak && \
+RUN sudo cp /usr/bin/make /usr/bin/make.bak && \
     echo "make.bak --jobs=${SYSTEM_CORES} \$@" > /usr/bin/make && \
-    pip install -v opencv-python==${OPENCV_VERSION} && \
-    mv /usr/bin/make.bak /usr/bin/make
+    pip3 install -v opencv-python==${OPENCV_VERSION} && \
+    sudo mv /usr/bin/make.bak /usr/bin/make
 
 RUN pip3 install --no-cache-dir python-multipart
 
