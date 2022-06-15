@@ -20,6 +20,7 @@ RUN pip3 install --no-cache-dir python-multipart
 
 RUN pip3 install --no-cache-dir --upgrade setuptools pip
 RUN pip3 install --no-cache-dir opencv-python
+RUN pip3 install --no-cache-dir fastapi['all']
 
 # Copy every file in the source folder to the created working directory
 COPY  /sr_model /home/$USERNAME/app/sr_model
