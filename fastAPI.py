@@ -15,7 +15,7 @@ capsule_model.load_weights(
     'GeneratorToDeploy/caps_gan_generator.h5')
 
 origins = [
-    "http://localhost:3000",
+    "http://*:3000",
 ]
 
 app.add_middleware(
