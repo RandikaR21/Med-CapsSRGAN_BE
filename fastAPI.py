@@ -14,9 +14,7 @@ capsule_model = generator()
 capsule_model.load_weights(
     'GeneratorToDeploy/caps_gan_generator.h5')
 
-origins = [
-    "http://*:3000",
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
