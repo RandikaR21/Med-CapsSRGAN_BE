@@ -3,6 +3,5 @@ logs/
 saved_model_weights/
 checkpoints/
 Dataset/
-*.png
-main.py
 .idea/
+*.tar

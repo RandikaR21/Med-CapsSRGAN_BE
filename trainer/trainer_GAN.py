@@ -1,10 +1,7 @@
-import time
 import tensorflow as tf
 import datetime
 
-from sr_model import evaluate
 from sr_model import capsule_srgan
-
 from tensorflow.keras.applications.vgg19 import preprocess_input
 from tensorflow.keras.losses import BinaryCrossentropy
 from tensorflow.keras.losses import MeanSquaredError
@@ -15,9 +12,7 @@ from tensorflow.keras.optimizers.schedules import PiecewiseConstantDecay
 
 class SRGAN_Trainer:
     current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    # current_time = "20220604-221622"
-    train_log_dir = 'logs/GAN_Original_no_blur/' + current_time + '/train'
-    test_log_dir = 'logs/GAN_Original_no_blur/' + current_time + '/test'
+    train_log_dir = 'logs/New/GAN/' + 'SRGAN_All_Blur' + '/train'
     train_summary_writer = tf.summary.create_file_writer(train_log_dir)
 
     def __init__(self,
@@ -65,7 +60,7 @@ class SRGAN_Trainer:
         ckpt_mgr = self.checkpoint_manager
         ckpt = self.checkpoint
 
-        tf.summary.trace_on(graph=True, profiler=True)
+        # tf.summary.trace_on(graph=True, profiler=True)
         pls_metric = Mean()
         dls_metric = Mean()
         cls_metric = Mean()
@@ -94,11 +89,6 @@ class SRGAN_Trainer:
 
                 ckpt.perceptual_loss = pls_metric.result()
                 ckpt_mgr.save()
-        with self.train_summary_writer.as_default():
-            tf.summary.trace_export(
-                name="my_func_trace",
-                step=0,
-                profiler_outdir='logs/gan_training/')
 
     @tf.function
     def train_step(self, lr, hr):

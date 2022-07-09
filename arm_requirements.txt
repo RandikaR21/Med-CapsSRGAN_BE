@@ -1,0 +1,6 @@
+fastapi
+matplotlib==3.5.0
+numpy
+Pillow
+uvicorn
+tensorflow
