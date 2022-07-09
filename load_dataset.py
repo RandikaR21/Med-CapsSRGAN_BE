@@ -109,7 +109,8 @@ class MedicalDataSet:
     @staticmethod
     def _populate_cache(ds, cache_file):
         print(f'Caching decoded images in {cache_file} ...')
-        for _ in ds: pass
+        for _ in ds:
+            pass
         print(f'Cached decoded images in {cache_file}.')
 
 

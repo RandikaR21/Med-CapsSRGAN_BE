@@ -3,14 +3,10 @@ import tensorflow as tf
 import datetime
 
 from sr_model import evaluate
-from sr_model import capsule_srgan
 
-from tensorflow.keras.applications.vgg19 import preprocess_input
-from tensorflow.keras.losses import BinaryCrossentropy
 from tensorflow.keras.losses import MeanSquaredError
 from tensorflow.keras.metrics import Mean
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.optimizers.schedules import PiecewiseConstantDecay
 
 
 class Trainer:
@@ -43,10 +39,10 @@ class Trainer:
 
         self.now = time.perf_counter()
 
-        log_dir = 'logs/pre_generator_no_blurred/'
-        tf.summary.trace_on(graph=True, profiler=True)
+        log_dir = 'logs/New/Pre_Generator/'
+        # tf.summary.trace_on(graph=True, profiler=True)
         current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        current_time = "20220603-235607"
+        current_time = "ALL_Blur"
         train_log_dir = log_dir + current_time + '/train'
         train_summary_writer = tf.summary.create_file_writer(train_log_dir)
         for lr, hr in train_dataset.take(steps - ckpt.step.numpy()):
@@ -84,11 +80,11 @@ class Trainer:
                 ckpt.psnr = psnr_value
                 ckpt_mgr.save()
                 self.now = time.perf_counter()
-        with train_summary_writer.as_default():
-            tf.summary.trace_export(
-                name="my_func_trace",
-                step=0,
-                profiler_outdir=log_dir)
+        # with train_summary_writer.as_default():
+        #     tf.summary.trace_export(
+        #         name="my_func_trace",
+        #         step=0,
+        #         profiler_outdir=log_dir)
 
     @tf.function
     def train_step(self, lr, hr):

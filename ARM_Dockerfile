@@ -13,10 +13,10 @@ RUN useradd --system --create-home --shell /bin/bash --uid $USERID $USERNAME
 USER $USERNAME
 WORKDIR /home/$USERNAME/app
 # Copy application requirements file to the created working directory
-COPY requirements.txt .
+COPY arm_requirements.txt .
 
 # Install application dependencies from the requirements file
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r arm_requirements.txt
 RUN pip3 install --no-cache-dir python-multipart
 
 RUN pip3 install --no-cache-dir --upgrade setuptools pip

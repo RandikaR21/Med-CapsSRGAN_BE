@@ -3,5 +3,5 @@ logs/
 saved_model_weights/
 checkpoints/
 Dataset/
-*.png
 .idea/
+*.tar

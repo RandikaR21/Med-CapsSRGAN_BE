@@ -35,7 +35,7 @@ def res_block_enhanced(x_in, num_filters):
     return x
 
 
-def sr_resnet(num_filters=64, num_res_blocks=16, withBatchNorm=True):
+def sr_resnet(num_filters=64, num_res_blocks=16, with_batch_norm=True):
     x_in = Input(shape=(None, None, 1))
     x = Lambda(normalize_01)(x_in)
 
@@ -43,7 +43,7 @@ def sr_resnet(num_filters=64, num_res_blocks=16, withBatchNorm=True):
     x = x_1 = PReLU(shared_axes=[1, 2])(x)
 
     for _ in range(num_res_blocks):
-        if withBatchNorm:
+        if with_batch_norm:
             x = res_block(x, num_filters)
         else:
             x = res_block_enhanced(x, num_filters)
