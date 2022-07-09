@@ -3,7 +3,8 @@
 
 *A Final Year Project by Randika Rodrigo*
 
-##Training the model
+
+## Training the model
 1. Execute `generator_trainer.py` to train pre-train the generator network.
 2. Execute `gan_trainer.py to train` GAN with the Capsule Network Discriminator.
 
